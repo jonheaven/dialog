@@ -2,7 +2,7 @@
 
 Normative rules live in [spec.md](spec.md). This file is the implementer path: encode, sign, broadcast, display.
 
-**Canonical repo:** [github.com/jonheaven/dsocial-spec](https://github.com/jonheaven/dsocial-spec)  
+**Canonical repo:** [github.com/jonheaven/docial-spec](https://github.com/jonheaven/docial-spec)  
 **Reference encoder:** [jonheaven/dojak](https://github.com/jonheaven/dojak) `@dojak/core` `encodeDsocialSignal` / `buildDsocialPostJson`.
 
 ## 1. Posts (content inscription)

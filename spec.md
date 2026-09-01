@@ -5,14 +5,14 @@ Version: v1.1 (Consolidated Launch Draft)
 Status: Draft — **Canonical public social layer**  
 Last Updated: 2026-08-03  
 Chain: Dogecoin  
-**Canonical public spec:** [github.com/jonheaven/dsocial-spec](https://github.com/jonheaven/dsocial-spec)  
+**Canonical public spec:** [github.com/jonheaven/docial-spec](https://github.com/jonheaven/docial-spec)  
 North star: [SOCIAL_LAYER.md](SOCIAL_LAYER.md)  
 Wallets: [WALLET.md](WALLET.md) · Agents: [AGENTS.md](AGENTS.md)
 
 ### Naming
 
 - **Display name:** **Ðocial**
-- **Public canonical:** **[jonheaven/dsocial-spec](https://github.com/jonheaven/dsocial-spec)** (studio working copy: `dogenals/spec/protocols/dsocial/`).
+- **Public canonical:** **[jonheaven/docial-spec](https://github.com/jonheaven/docial-spec)** (studio working copy: `dogenals/spec/protocols/dsocial/`).
 - **Wire marker:** OP_RETURN **`Ð:SOC`** · inscriptions **`"p": "Ð:SOC"`**
 - **Supersedes for new social deployments:** standalone ÐPulse free-likes, Doge Signals product umbrella, ÐEcho-as-primary-repost (see §14)
 

@@ -61,4 +61,4 @@ Expected payload hex: `c3903a534f430102010100112233445566778899aabbccddeeff01000
 | `api.command.dog` | Product notify | Optional sockets; never a second like count |
 | [dogenals.com](https://dogenals.com) | Reference feed UX | Copy the Like = tipped engage rule |
 
-Ambiguity is a **spec issue**. Do not invent a private dialect. Open an issue on [jonheaven/dsocial-spec](https://github.com/jonheaven/dsocial-spec).
+Ambiguity is a **spec issue**. Do not invent a private dialect. Open an issue on [jonheaven/docial-spec](https://github.com/jonheaven/docial-spec).
