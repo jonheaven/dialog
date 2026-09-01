@@ -1,0 +1,47 @@
+{
+  "protocol": "Ðocial",
+  "version": "1.1",
+  "magic": "Ð:SOC",
+  "magic_hex": "c3903a534f43",
+  "payload_length_bytes": 30,
+  "layout": "magic[6] version[1] kind[1] flags[1] reaction[1] target_hash16[16] nonce[4]",
+  "vectors": [
+    {
+      "id": "SOC-OR-001",
+      "description": "engage like: flags=0x01 sound, reaction=0x01, target hash, nonce=1",
+      "kind": "engage",
+      "kind_byte": "02",
+      "flags_byte": "01",
+      "reaction_byte": "01",
+      "target_hash16_hex": "00112233445566778899aabbccddeeff",
+      "nonce": 1,
+      "nonce_le_hex": "01000000",
+      "payload_hex": "c3903a534f430102010100112233445566778899aabbccddeeff01000000",
+      "notes": "Tip amount is NOT in OP_RETURN; attach DOGE output to pay_to in same tx."
+    },
+    {
+      "id": "SOC-OR-002",
+      "description": "follow: reaction=0x00, amount N/A",
+      "kind": "follow",
+      "kind_byte": "03",
+      "flags_byte": "00",
+      "reaction_byte": "00",
+      "target_hash16_hex": "ffffffffffffffffffffffffffffffff",
+      "nonce": 0,
+      "nonce_le_hex": "00000000",
+      "payload_hex": "c3903a534f4301030000ffffffffffffffffffffffffffffffff00000000"
+    },
+    {
+      "id": "SOC-OR-003",
+      "description": "free react fire without tip",
+      "kind": "engage",
+      "kind_byte": "02",
+      "flags_byte": "00",
+      "reaction_byte": "03",
+      "target_hash16_hex": "00112233445566778899aabbccddeeff",
+      "nonce": 7,
+      "nonce_le_hex": "07000000",
+      "payload_hex": "c3903a534f430102000300112233445566778899aabbccddeeff07000000"
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "$comment": "Ðocial v1.1 conformance — structural only; tip validity is UTXO-based.",
+  "version": "1.1",
+  "protocol": "dsocial",
+  "marker": "Ð:SOC",
+  "vectors": [
+    {
+      "id": "SOC-001",
+      "description": "Valid decoded engage signal",
+      "schema": "schemas/signal-decoded.json",
+      "expect": "pass",
+      "payload": {
+        "magic": "Ð:SOC",
+        "version": 1,
+        "kind": "engage",
+        "reaction": "like",
+        "reaction_byte": 1,
+        "target_hash16": "00112233445566778899aabbccddeeff",
+        "nonce": 1
+      }
+    },
+    {
+      "id": "SOC-002",
+      "description": "Valid post v1.1",
+      "schema": "schemas/post.json",
+      "expect": "pass",
+      "payload": {
+        "p": "Ð:SOC",
+        "v": "1.1",
+        "op": "post",
+        "chain": "dogecoin",
+        "content": "Hello Ðocial",
+        "pay_to": "D8mZsgKwmSQWYRPEMCcm8KzNFj1JVF5UpA"
+      }
+    },
+    {
+      "id": "SOC-003",
+      "description": "Valid reply",
+      "schema": "schemas/post.json",
+      "expect": "pass",
+      "payload": {
+        "p": "Ð:SOC",
+        "v": "1.1",
+        "op": "reply",
+        "parent": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0",
+        "content": "Reply"
+      }
+    },
+    {
+      "id": "SOC-004",
+      "description": "Valid engage API event",
+      "schema": "schemas/engage.json",
+      "expect": "pass",
+      "payload": {
+        "kind": "engage",
+        "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0",
+        "sender": "DSender",
+        "reaction": "like",
+        "txid": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "tip_koinu": 100000,
+        "tipped": true
+      }
+    },
+    {
+      "id": "SOC-005",
+      "description": "Valid follow signal decoded",
+      "schema": "schemas/signal-decoded.json",
+      "expect": "pass",
+      "payload": {
+        "magic": "Ð:SOC",
+        "version": 1,
+        "kind": "follow",
+        "target_hash16": "ffffffffffffffffffffffffffffffff",
+        "nonce": 0
+      }
+    },
+    {
+      "id": "SOC-006",
+      "description": "Reject wrong magic",
+      "schema": "schemas/signal-decoded.json",
+      "expect": "fail",
+      "payload": {
+        "magic": "Ð:DIG",
+        "version": 1,
+        "kind": "engage",
+        "target_hash16": "00112233445566778899aabbccddeeff"
+      }
+    },
+    {
+      "id": "SOC-007",
+      "description": "Reject reply without parent",
+      "schema": "schemas/post.json",
+      "expect": "fail",
+      "payload": {
+        "p": "Ð:SOC",
+        "v": "1.1",
+        "op": "reply",
+        "content": "orphan"
+      }
+    },
+    {
+      "id": "SOC-008",
+      "description": "Reject legacy like inscription op as post schema",
+      "schema": "schemas/post.json",
+      "expect": "fail",
+      "payload": {
+        "p": "Ð:SOC",
+        "v": "1.1",
+        "op": "like",
+        "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0"
+      }
+    }
+  ]
+}
