@@ -3,7 +3,7 @@
 
 Version: v1.1 (Consolidated Launch Draft)  
 Status: Draft — **Canonical public social layer**  
-Last Updated: 2026-08-03  
+Last Updated: 2026-09-01  
 Chain: Dogecoin  
 **Canonical public spec:** [github.com/jonheaven/docial-spec](https://github.com/jonheaven/docial-spec)  
 North star: [SOCIAL_LAYER.md](SOCIAL_LAYER.md)  
@@ -27,7 +27,7 @@ Wallets: [WALLET.md](WALLET.md) · Agents: [AGENTS.md](AGENTS.md)
 5. Content Inscription Format  
 6. Engage (React + Tip)  
 7. Follows  
-8. Replies, Quotes, Reposts  
+8. Replies, Quotes, Reposts, Mentions  
 9. Profiles and Identity  
 10. Wallet, Frontend, Indexer  
 11. Integrations  
@@ -228,7 +228,8 @@ Engage and follow are **signals**. Optional rich records are not required for va
 | `parent` / `reply_to` | Thread |
 | `quote` / `repost_of` | References |
 | `media[]` | `{ "inscription_id", "mime" }` — prefer separate media inscriptions |
-| `tags` / `mentions` | Discovery (mentions are not proofs) |
+| `tags` | Discovery |
+| `mentions` | Address and/or inscription id list — discovery; **paid mentions** are UTXO outputs (§8.1), not this array alone |
 | `whisper` | Ðignal inscription id for private attach |
 | `dms` / `dx` | Identity links |
 | `lang` | BCP-47 |
@@ -299,6 +300,28 @@ Per-address `signals_consistency` / governance: count **weeks with any Ðocial e
 
 Each engage tx is a separate event (boosts allowed). Frontends **MAY** show “you already engaged” as UX only.
 
+### 6.7 Shared UTXO tip accounting
+
+Every Ðocial tip is a **spendable DOGE output in the same transaction** as the action. Indexers **MUST NOT** trust an amount in OP_RETURN or JSON.
+
+**Countable output.** All of:
+
+1. Spendable: standard P2PKH, P2PK, or P2SH that pays the credited address.  
+2. **Not** `OP_RETURN`.  
+3. **Not** this tx’s content-inscription output (the UTXO that carries `"p":"Ð:SOC"`), if any.  
+4. Script pays the credited address.
+
+**Paid threshold.** For that credit, `tipped = true` when `tip_koinu >= max(1_000_000, target.min_like_koinu)` koinu (default **0.01 DOGE**). Mentions with no target `min_like_koinu` use **1_000_000**.
+
+**One output, one credit** — first match wins; do not double-count:
+
+1. Engage target `pay_to` (kind=`engage`) → engage tip (§6.2)  
+2. Else this inscription’s quoted / `repost_of` / `parent` post `pay_to` → **attribution tip** (§8.1)  
+3. Else a resolved `mentions[]` address → **mention tip** (§8.2)  
+4. Else ignore (change, unrelated pay)
+
+If the credited address is the first signed input address, **MUST NOT** set `tipped` (no self-tip).
+
 ---
 
 ## 7. Follows
@@ -310,7 +333,7 @@ Each engage tx is a separate event (boosts allowed). Frontends **MAY** show “y
 
 ---
 
-## 8. Replies, Quotes, Reposts
+## 8. Replies, Quotes, Reposts, Mentions
 
 | `op` | MUST include |
 | --- | --- |
@@ -321,6 +344,28 @@ Each engage tx is a separate event (boosts allowed). Frontends **MAY** show “y
 Targets **SHOULD** be Ðocial posts; quoting any inscription is allowed (display as shared inscription).  
 Cycles: store both; UI breaks loops.  
 **Repost replaces ÐEcho** for new social reshares. Do not require a second ÐEcho inscription.
+
+### 8.1 Attribution tip (quote / repost / reply)
+
+The content inscription is valid with or without a tip (same as free engage).
+
+In the **same reveal tx**, wallets **MAY** add countable outputs to the referenced post’s pay address (§6.3, §6.7). That is the **attribution tip** — Dogecoin UTXO movement, no extra OP_RETURN.
+
+| UI | Wire |
+| --- | --- |
+| **Quote** | inscription `op:quote` + **SHOULD** pay quoted `pay_to` ≥ min |
+| **Repost** | inscription `op:repost` + **SHOULD** pay original `pay_to` ≥ min |
+| **Reply** | inscription `op:reply` + **MAY** pay parent `pay_to` ≥ min |
+
+Wallets **MUST** show those amounts before sign. Indexers record `attr_tip_koinu` / `attr_tipped` on the referenced post (and MAY add them into that post’s `tip_total_koinu`).
+
+### 8.2 Mention tip
+
+`mentions[]` is **not** a proof. Entries **SHOULD** be a Dogecoin address or a lowercase inscription id `{64hex}i{n}` (resolve that post via §6.3). Bare `@handle` text is not a mention target unless the wallet resolved it to an address **before** building outputs (Ð𝕏 is optional lookup, not this protocol).
+
+A mention is **tipped** only when a countable output in that content tx pays the resolved address and classifies as mention tip (§6.7). Unpaid `mentions[]` rows stay discovery-only.
+
+dogenals.com-class compose **SHOULD** attach ≥ min DOGE per mentioned address the user chose to pay. Cap unpaid mention spam in the UI; the chain does not need a committee.
 
 ---
 
@@ -342,8 +387,8 @@ Cycles: store both; UI breaks loops.
 
 ### Wallets
 
-- Build **one** social encoder: Ðocial binary + optional tip output  
-- Resolve `pay_to` before Like  
+- Build **one** social encoder: Ðocial binary + optional tip **outputs** (engage, attribution, mentions)  
+- Resolve `pay_to` before Like, quote, repost, and paid mentions  
 - Mute, quiet mode, min-tip display threshold  
 - Label all Ðocial content **public forever**  
 
@@ -381,7 +426,7 @@ Cycles: store both; UI breaks loops.
 ## 12. Security
 
 - Public graph and posts are permanent and linkable  
-- Tips can dust-spam creators — wallets SHOULD filter low tips  
+- Tips can dust-spam creators — wallets SHOULD filter below-min outputs (likes, attribution, mentions)  
 - Notification bits are untrusted  
 - Never put secrets in Ðocial content  
 - Hash16 ambiguity → don’t count paid tip without unique resolve  
@@ -405,7 +450,7 @@ Cycles: store both; UI breaks loops.
 }
 ```
 
-Same tx: DOGE output ≥ 100000 koinu to post `pay_to`.
+Same tx: DOGE output ≥ 1_000_000 koinu to post `pay_to`.
 
 ### 13.2 Post
 
@@ -451,6 +496,28 @@ Same tx: DOGE output ≥ 100000 koinu to post `pay_to`.
 
 Binary engage, `reaction=fire`, no DOGE to `pay_to` → free engage.
 
+### 13.6 Quote with attribution + mention (UTXO, not JSON)
+
+Inscription body:
+
+```json
+{
+  "p": "Ð:SOC",
+  "v": "1.1",
+  "op": "quote",
+  "chain": "dogecoin",
+  "quote": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0",
+  "content": "Branching this — and paying the original.",
+  "pay_to": "D8mZsgKwmSQWYRPEMCcm8KzNFj1JVF5UpA",
+  "mentions": ["DMentionPayToExampleDoNotUse000000"]
+}
+```
+
+Same **reveal** tx, extra countable outputs (not in JSON):
+
+- ≥ 1_000_000 koinu to the quoted post’s `pay_to` → attribution tip  
+- ≥ 1_000_000 koinu to `DMentionPayToExampleDoNotUse000000` → mention tip  
+
 ---
 
 ## 14. Consolidation and Legacy
@@ -485,7 +552,7 @@ No mainnet Ðocial history is assumed; v1.1 is the greenfield freeze.
 
 1. Inscriptions for posts and threads  
 2. 30-byte `Ð:SOC` signals for engage and follow  
-3. Tips as real DOGE outputs to `pay_to`  
+3. Tips as real DOGE outputs to `pay_to` (like, quote/repost branch, mentions)  
 4. One Like button economics for dogenals.com  
 5. Ðignal for private; identity protocols for profiles  
 6. Legacy Pulse/Echo/Signals absorbed or read-only  

@@ -13,7 +13,7 @@
 | **License** | [MIT](LICENSE) |
 | **Source of truth** | **[spec.md](spec.md)** |
 
-Tip amount is **never** in the OP_RETURN. The signal names the target; spendable outputs to `pay_to` are the money.
+Tip amount is **never** in the OP_RETURN. The signal names the target; spendable outputs to `pay_to` are the money. Quote/repost **SHOULD** pay the original the same way. Mentions pay only as extra UTXOs, not as JSON.
 
 ## Authors
 
@@ -38,8 +38,10 @@ North star (mental model, not extra MUST rules): [SOCIAL_LAYER.md](SOCIAL_LAYER.
 ```text
 1. Author inscribes JSON p:"Ð:SOC" op:post (content + pay_to).
 2. Reader likes: same tx has OP_RETURN Ð:SOC engage + DOGE output ≥ min to pay_to.
-3. Indexer stores the post, sums tip from UTXOs (never from the signal), counts engage.
-4. Follow is a 30-byte signal; last follow/unfollow wins per pair.
+3. Quote/repost: inscription + SHOULD also pay the original’s pay_to in the reveal tx.
+4. Mentions: extra DOGE outputs to resolved addresses (JSON list is not the payment).
+5. Indexer stores the post, sums tips from UTXOs (never from the signal).
+6. Follow is a 30-byte signal; last follow/unfollow wins per pair.
 ```
 
 ### Compact engage (SOC-OR-001)

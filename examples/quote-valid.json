@@ -5,5 +5,6 @@
   "chain": "dogecoin",
   "quote": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0",
   "content": "Quoting with commentary.",
-  "pay_to": "D8mZsgKwmSQWYRPEMCcm8KzNFj1JVF5UpA"
+  "pay_to": "D8mZsgKwmSQWYRPEMCcm8KzNFj1JVF5UpA",
+  "mentions": ["DQuotedAuthorPayToExample000000000"]
 }

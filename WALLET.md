@@ -24,6 +24,10 @@ Inscribe it with the **Dogecoin P2SH commit → reveal** pattern (not Bitcoin ta
 
 Reply / quote / repost: same `p`/`v`, required `parent` / `quote` / `repost_of` ([spec.md §5.2](spec.md)).
 
+**Quote / repost SHOULD** add a spendable DOGE output to the original post’s `pay_to` in the **same reveal tx** (≥ min, same as Like). **Reply MAY**. That is an attribution tip — not a new opcode ([spec.md §8.1](spec.md)).
+
+Paid **mentions**: list addresses or inscription ids in `mentions[]`, and add countable outputs to those resolved addresses in the same tx ([spec.md §8.2](spec.md)). The JSON list alone is not a payment.
+
 Label the UI: **public forever**.
 
 ## 2. Engage (Like / react / tip)
@@ -65,7 +69,7 @@ Studio default: command.dog `POST /v1/tx/broadcast` → local Core. Fail loud on
 ## 6. Display
 
 - Feed from dogex, not from a private like DB.
-- Show `engage_count`, `tipped_engage_count`, `tip_total_koinu` from the indexer.
+- Show `engage_count`, `tipped_engage_count`, `tip_total_koinu`, plus attribution/mention tip totals from the indexer.
 - `tweetVerified`-style claims do not apply here. Tips are UTXOs — show amounts from chain.
 - Whisper / DM → Ðignal, not a Ðocial op.
 

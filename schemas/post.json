@@ -42,7 +42,12 @@
       "items": { "type": "string", "maxLength": 64 },
       "maxItems": 32
     },
-    "mentions": { "type": "array", "items": { "type": "string" } },
+    "mentions": {
+      "type": "array",
+      "maxItems": 16,
+      "items": { "type": "string", "minLength": 1, "maxLength": 128 },
+      "$comment": "Discovery only. A mention is tipped iff a countable UTXO in the same tx pays the resolved address (spec §8.2)."
+    },
     "dms": { "$ref": "#/$defs/inscriptionId" },
     "dx": { "$ref": "#/$defs/inscriptionId" },
     "whisper": { "$ref": "#/$defs/inscriptionId" },

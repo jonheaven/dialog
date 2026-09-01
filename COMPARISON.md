@@ -6,11 +6,12 @@
 
 | System | Truth | Paid attention | Notes |
 | --- | --- | --- | --- |
-| **Ðocial** | Dogecoin L1 | Yes (UTXO tip on engage) | Canonical Dogenals public social |
+| **Ðocial** | Dogecoin L1 | Yes (UTXO: like, quote/repost branch, mentions) | Canonical Dogenals public social |
 | **Ðignal** | Dogecoin L1 | No | Private only |
 | **Legacy ÐPulse** | OP_RETURN | No | Superseded by Ðocial engage |
 | **Legacy ÐEcho** | Inscription | No | Superseded by Ðocial repost for social |
 | **Nostr** | Relays | Optional zaps | Fine as cache; not L1 truth |
+| **Twetch / Bitcoin Schema** | BSV OP_RETURN (B:// + MAP + AIP) | Payees API + outputs | Learned: like must *name* the post on L1; branch/mention pay as extra UTXOs. Do **not** copy unbounded OP_RETURN, MAP pipes, or a hosted `/payees` invoice as consensus |
 | **Pure OP_RETURN socials** | Chain | Rare | Too weak for media posts |
 | **Inscription-only socials** | Chain | Rare | Too heavy for engage/follow |
 

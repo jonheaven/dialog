@@ -85,8 +85,9 @@ Historical specs remain in-repo for reference. They are **not** competing launch
 
 | User action | On-chain | Pays creator? |
 | --- | --- | --- |
-| **Post** | Inscription `op: post` (+ optional announce signal) | — |
-| **Reply / Quote / Repost** | Inscription with parent/quote/repost_of | — |
+| **Post** | Inscription `op: post` (+ optional announce signal) | Mention tips **if** extra outputs |
+| **Reply** | Inscription with `parent` | **May** pay parent `pay_to` |
+| **Quote / Repost** | Inscription with quote/repost_of | **Should** pay original `pay_to` |
 | **Like** (primary button) | `engage` + DOGE ≥ min to post `pay_to` | **Yes** |
 | **React** (emoji) | `engage` with reaction byte; tip optional | Only if tip attached |
 | **Follow / Unfollow** | compact signal | No |
@@ -103,7 +104,7 @@ Default **Like** = paid. That is the cultural and economic loop: attention has c
 3. web-com: home feed, compose, like, follow, profile  
 4. doge.cam: media → post  
 5. command.dog: notifications only  
-6. Wallets: one builder for `Ð:SOC` engage + tip output  
+6. Wallets: one builder for `Ð:SOC` engage + tip outputs (like, quote/repost branch, mentions)  
 
 No mainnet dual-stack. No “phase 1 free likes only.” The default product is honest about money.
 

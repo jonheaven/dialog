@@ -25,16 +25,20 @@ Dogecoin L1  →  dogex  →  APIs  →  dogenals.com / doge.cam
 | `social_by_author` | author → posts |
 | `social_thread` | parent → children |
 | `social_engage` | (post, txid) → sender, reaction, tip_koinu, tipped |
-| `social_engage_agg` | post → engage_count, tipped_engage_count, tip_total_koinu |
+| `social_engage_agg` | post → engage_count, tipped_engage_count, tip_total_koinu, attr_tip_total_koinu, mention_tip_total_koinu |
+| `social_attr_tip` | (post, txid) → sender, attr_tip_koinu, attr_tipped (quote/repost/reply) |
+| `social_mention_tip` | (address or post, txid) → sender, mention_tip_koinu, mention_tipped |
 | `social_follow` | follower→followee active edge |
 
-### Engage validation
+### Engage / attribution / mention validation
 
-1. Parse kind=`engage`, reaction≠0  
-2. Resolve target from hash16 (unique)  
-3. `tip_koinu` = sum of spendable outputs to pay_to  
-4. `tipped = tip_koinu >= max(1_000_000, min_like_koinu)`  
-5. Never trust a client “amount” field  
+1. Parse kind=`engage`, reaction≠0 (engage only)  
+2. Resolve target from hash16 (unique) when engaging  
+3. Classify countable outputs per spec.md §6.7 (never trust a client “amount”)  
+4. Engage: `tip_koinu` = sum to target `pay_to`; `tipped = tip_koinu >= max(1_000_000, min_like_koinu)`  
+5. Quote/repost/reply reveal: same rule toward referenced `pay_to` → `attr_tip_*`  
+6. Content tx outputs to resolved `mentions[]` → `mention_tip_*`  
+7. Exclude OP_RETURN, the inscription-bearing output, and self-tips  
 
 ### HTTP (ship names)
 
@@ -58,14 +62,14 @@ Generic: `GET /api/doginals/protocol/Ð:SOC` until dedicated routes land.
 
 ## command.dog
 
-- Websocket: `social:post`, `social:engage`, `social:follow`  
+- Websocket: `social:post`, `social:engage`, `social:follow`, `social:attr_tip`, `social:mention_tip`  
 - Throttle notifications  
 - **No** second like ledger  
 
 ## web-com (dogenals.com)
 
 1. Home feed  
-2. Compose post (wallet inscribe)  
+2. Compose post (wallet inscribe; quote/repost **SHOULD** pay original; paid mentions = extra outputs)  
 3. **Like** = engage + min tip PSBT  
 4. React picker = engage ± tip  
 5. Follow  

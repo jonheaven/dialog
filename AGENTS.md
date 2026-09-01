@@ -23,7 +23,7 @@ A wallet or dApp is compliant when:
 1. **Post / reply / quote / repost** inscribes `"p":"Ð:SOC"` `"v":"1.1"` per [spec.md §5](spec.md).
 2. **Engage** builds the 30-byte `Ð:SOC` payload from [spec.md §4](spec.md) and [reference/dsocial.mjs](reference/dsocial.mjs). `kind=engage` **MUST** set a non-zero reaction.
 3. **Like** (product default) is engage `reaction=like` **and** a spendable DOGE output to the post `pay_to` ≥ `max(1_000_000, min_like_koinu)` koinu (0.01 DOGE default).
-4. Tip amount is **never** encoded in OP_RETURN. Indexers sum outputs.
+4. Tip amount is **never** encoded in OP_RETURN. Indexers sum outputs (§6.7). Quote/repost **SHOULD** pay the original the same way. Mentions pay only when an output hits the resolved address.
 5. **Follow / unfollow** is a 30-byte signal (target = followee address hash16). No value required.
 6. One user action → **at most one** Ðocial emission. No dual-write of `Ð:P` or ÐEcho.
 
@@ -35,6 +35,7 @@ A wallet or dApp is compliant when:
 - Do not treat command.dog sockets as the like ledger. Chain (dogex) is truth.
 - Do not encrypt public posts. Private bodies are Ðignal, not Ðocial.
 - Do not invent a `like` content `op`. Engage is the signal.
+- Do not require a hosted `/payees` or invoice UUID for a tip to count. The UTXO is the invoice.
 
 ## Live checks (use these, don’t stub)
 
