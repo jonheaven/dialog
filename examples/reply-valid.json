@@ -1,9 +1,11 @@
 {
-  "p": "Ð:SOC",
-  "v": "1.1",
+  "p": "Ð:DLG",
+  "v": 1,
+  "net": "dogecoin",
   "op": "reply",
-  "chain": "dogecoin",
-  "parent": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0",
-  "content": "On-chain reply.",
-  "pay_to": "D8mZsgKwmSQWYRPEMCcm8KzNFj1JVF5UpA"
+  "ref": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0",
+  "nonce": "0a0b0c0d0e0f1011",
+  "text": "A signed reply.",
+  "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+  "sig": "IFgsKMocrj8JpFtxhQw4C8DlQ0jBzW2jFHxSmHqwb1bWWD85xQHCGmjd7X7ezMZqgjjvxEn6YHSsBExlyUQYVac="
 }

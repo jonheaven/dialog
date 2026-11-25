@@ -1,0 +1,16 @@
+{
+  "p": "Ð:DLG",
+  "v": 1,
+  "net": "dogecoin",
+  "op": "keylink",
+  "nonce": "0000000000001004",
+  "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+  "ref": "DGcTmSgC9cgKW1dET4MNFLV5bCg7em2Bds",
+  "ops": [
+    "post",
+    "reply",
+    "engage"
+  ],
+  "label": "cli",
+  "sig": "H6nG8K/w2+gIy1VKkFiPBu8wfMBE9d195k7xQ2lhzw8qGYDYTM4dHw3MAXCsCken/MBgNNIUVtWbq8mFjFXtDSA="
+}

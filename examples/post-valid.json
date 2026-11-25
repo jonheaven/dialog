@@ -1,9 +1,10 @@
 {
-  "p": "Ð:SOC",
-  "v": "1.1",
+  "p": "Ð:DLG",
+  "v": 1,
+  "net": "dogecoin",
   "op": "post",
-  "chain": "dogecoin",
-  "content": "Hello Ðocial — one protocol, tips in DOGE.",
-  "pay_to": "D8mZsgKwmSQWYRPEMCcm8KzNFj1JVF5UpA",
-  "tags": ["dogenals"]
+  "nonce": "0102030405060708",
+  "text": "Hello from a key, not from a recipient.",
+  "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+  "sig": "H3RgdKU3/dvdeWLeEKANG8ekwt3un9DPEZsqoH3l1qQ0NhX7neD31lv11nGRWvU04e+efFVZiN9cNxIua72bc/k="
 }

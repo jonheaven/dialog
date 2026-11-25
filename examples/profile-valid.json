@@ -1,0 +1,16 @@
+{
+  "p": "Ð:DLG",
+  "v": 1,
+  "net": "dogecoin",
+  "op": "profile",
+  "nonce": "0000000000001003",
+  "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+  "name": "Fixture Shibe",
+  "bio": "Public test key 1.",
+  "avatar": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi0",
+  "links": [
+    "https://dogenals.org"
+  ],
+  "tip": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+  "sig": "IP9c3jDYUbgXvW785fR0u6UbWY7ALTQVN5ICMWvXv0SncvghFua8tv6vhPq1gjg0jgJkW5ei2mFvu4YltdTGh9Q="
+}

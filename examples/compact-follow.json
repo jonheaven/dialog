@@ -1,0 +1,9 @@
+{
+  "carrier": "OP_RETURN",
+  "note": "Output script of a normal transaction. The author is the P2PKH key spending input 0 with SIGHASH_ALL.",
+  "action": {
+    "op": "follow",
+    "ref": "D5kTEGxmas71USKAcAaJptKjq8NJc6EK8C"
+  },
+  "script_hex": "6a1bc3903a444c471306afd46bcdfd22ef94ac122aa11f241244a37ecc"
+}

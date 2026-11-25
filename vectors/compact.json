@@ -1,0 +1,92 @@
+{
+  "protocol": "Ðialog",
+  "carrier": "OP_RETURN",
+  "magic_hex": "c3903a444c47",
+  "relay_limit_script_bytes": 83,
+  "vectors": [
+    {
+      "id": "DLG-C-001",
+      "action": {
+        "op": "react",
+        "ref": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0",
+        "react": "like"
+      },
+      "script_hex": "6a2cc3903a444c4711aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0000000001",
+      "script_bytes": 46
+    },
+    {
+      "id": "DLG-C-002",
+      "action": {
+        "op": "react",
+        "ref": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0",
+        "react": "none"
+      },
+      "script_hex": "6a2cc3903a444c4711aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0000000000",
+      "script_bytes": 46
+    },
+    {
+      "id": "DLG-C-003",
+      "action": {
+        "op": "repost",
+        "ref": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0"
+      },
+      "script_hex": "6a2cc3903a444c4712aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0000000001",
+      "script_bytes": 46
+    },
+    {
+      "id": "DLG-C-004",
+      "action": {
+        "op": "repost",
+        "ref": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0",
+        "undo": true
+      },
+      "script_hex": "6a2cc3903a444c4712aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa0000000000",
+      "script_bytes": 46
+    },
+    {
+      "id": "DLG-C-005",
+      "action": {
+        "op": "follow",
+        "ref": "D5kTEGxmas71USKAcAaJptKjq8NJc6EK8C"
+      },
+      "script_hex": "6a1bc3903a444c471306afd46bcdfd22ef94ac122aa11f241244a37ecc",
+      "script_bytes": 29
+    },
+    {
+      "id": "DLG-C-006",
+      "action": {
+        "op": "unfollow",
+        "ref": "D5kTEGxmas71USKAcAaJptKjq8NJc6EK8C"
+      },
+      "script_hex": "6a1bc3903a444c471406afd46bcdfd22ef94ac122aa11f241244a37ecc",
+      "script_bytes": 29
+    },
+    {
+      "id": "DLG-C-007",
+      "action": {
+        "op": "tip",
+        "ref": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccci258"
+      },
+      "script_hex": "6a2bc3903a444c4715cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc02010000",
+      "script_bytes": 45
+    },
+    {
+      "id": "DLG-C-008",
+      "action": {
+        "op": "delete",
+        "ref": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0"
+      },
+      "script_hex": "6a2bc3903a444c4716aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa00000000",
+      "script_bytes": 45
+    },
+    {
+      "id": "DLG-C-009",
+      "action": {
+        "op": "keyrevoke",
+        "ref": "DGcTmSgC9cgKW1dET4MNFLV5bCg7em2Bds"
+      },
+      "script_hex": "6a1bc3903a444c47177dd65592d0ab2fe0d0257d571abf032cd9db93dc",
+      "script_bytes": 29
+    }
+  ]
+}

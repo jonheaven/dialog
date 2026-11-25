@@ -1,0 +1,11 @@
+{
+  "p": "Ð:DLG",
+  "v": 1,
+  "net": "dogecoin",
+  "op": "edit",
+  "nonce": "0000000000001000",
+  "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+  "ref": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0",
+  "text": "Edited text. The original stays on chain.",
+  "sig": "H8mw9Vr/cdTVvbTs82oLUvK8tN+GgntVX53k0l6LteQnTHHsYM7/Q8gBYq3FL12gitmUKaznS9c5dS7DXy77jTM="
+}

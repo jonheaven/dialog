@@ -1,0 +1,75 @@
+{
+  "note": "raw is the inscription text. Backslashes here are JSON escapes so the checker sees the \\u and \\/ spellings.",
+  "cases": [
+    {
+      "id": "dlg-001-u006fp-before-op",
+      "duplicate": true,
+      "raw": "{\"p\":\"Ð:DLG\",\"\\u006fp\":\"nope\",\"v\":1,\"net\":\"dogecoin\",\"op\":\"post\",\"nonce\":\"0102030405060708\",\"text\":\"Hello from a key, not from a recipient.\",\"addr\":\"DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE\",\"sig\":\"H3RgdKU3/dvdeWLeEKANG8ekwt3un9DPEZsqoH3l1qQ0NhX7neD31lv11nGRWvU04e+efFVZiN9cNxIua72bc/k=\"}"
+    },
+    {
+      "id": "solidus",
+      "duplicate": true,
+      "raw": "{\"a\\/b\":1,\"a/b\":2}"
+    },
+    {
+      "id": "backslash-and-u005c",
+      "duplicate": true,
+      "raw": "{\"a\\\\b\":1,\"a\\u005cb\":2}"
+    },
+    {
+      "id": "newline-and-u000a",
+      "duplicate": true,
+      "raw": "{\"\\n\":1,\"\\u000a\":2}"
+    },
+    {
+      "id": "quote-and-u0022",
+      "duplicate": true,
+      "raw": "{\"a\\\"b\":1,\"a\\u0022b\":2}"
+    },
+    {
+      "id": "backspace-and-u0008",
+      "duplicate": true,
+      "raw": "{\"\\b\":1,\"\\u0008\":2}"
+    },
+    {
+      "id": "uppercase-hex",
+      "duplicate": true,
+      "raw": "{\"\\u006F\":1,\"o\":2}"
+    },
+    {
+      "id": "surrogate-pair-and-character",
+      "duplicate": true,
+      "raw": "{\"\\uD83D\\uDE00\":1,\"😀\":2}"
+    },
+    {
+      "id": "nested-decoded-duplicate",
+      "duplicate": true,
+      "raw": "{\"wrap\":{\"\\u006fp\":1,\"op\":2}}"
+    },
+    {
+      "id": "nested-objects-do-not-share-keys",
+      "duplicate": false,
+      "raw": "{\"op\":{\"op\":\"post\"}}"
+    },
+    {
+      "id": "array-elements-do-not-share-keys",
+      "duplicate": false,
+      "raw": "[{\"op\":1},{\"op\":1}]"
+    },
+    {
+      "id": "string-value-is-not-a-key",
+      "duplicate": false,
+      "raw": "{\"text\":\"\\\"op\\\":\\\"\\\\u006fp\\\"\",\"op\":\"post\"}"
+    },
+    {
+      "id": "different-code-unit",
+      "duplicate": false,
+      "raw": "{\"op\":1,\"\\u006ep\":2}"
+    },
+    {
+      "id": "whitespace-around-escaped-key",
+      "duplicate": true,
+      "raw": "{\n  \"\\u006fp\" : \"nope\" ,\n  \"op\" : \"post\"\n}"
+    }
+  ]
+}

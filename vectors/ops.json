@@ -1,0 +1,287 @@
+{
+  "protocol": "Ðialog",
+  "marker": "Ð:DLG",
+  "version": 1,
+  "fixture_note": "Public test keys 1, 2 and 3. Not for funds.",
+  "author_address": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+  "other_address": "D5kTEGxmas71USKAcAaJptKjq8NJc6EK8C",
+  "linked_key_address": "DGcTmSgC9cgKW1dET4MNFLV5bCg7em2Bds",
+  "content": [
+    {
+      "id": "DLG-OP-001",
+      "expect": "pass",
+      "body": {
+        "p": "Ð:DLG",
+        "v": 1,
+        "net": "dogecoin",
+        "op": "edit",
+        "nonce": "0000000000001000",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "ref": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0",
+        "text": "Edited text. The original stays on chain.",
+        "sig": "H8mw9Vr/cdTVvbTs82oLUvK8tN+GgntVX53k0l6LteQnTHHsYM7/Q8gBYq3FL12gitmUKaznS9c5dS7DXy77jTM="
+      },
+      "signed_message": "Ðialog:v1:{\"addr\":\"DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE\",\"net\":\"dogecoin\",\"nonce\":\"0000000000001000\",\"op\":\"edit\",\"p\":\"Ð:DLG\",\"ref\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0\",\"text\":\"Edited text. The original stays on chain.\",\"v\":1}"
+    },
+    {
+      "id": "DLG-OP-002",
+      "expect": "pass",
+      "body": {
+        "p": "Ð:DLG",
+        "v": 1,
+        "net": "dogecoin",
+        "op": "delete",
+        "nonce": "0000000000001001",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "ref": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0",
+        "sig": "IMVIqgQnI9t+SrUENhWzUsetwPYXOp32jBX7N5lwk4/eIJ2Pa/qkaEiPlonEAJynDJqzF60Xu8CCkpK9uN7NcoI="
+      },
+      "signed_message": "Ðialog:v1:{\"addr\":\"DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE\",\"net\":\"dogecoin\",\"nonce\":\"0000000000001001\",\"op\":\"delete\",\"p\":\"Ð:DLG\",\"ref\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0\",\"v\":1}"
+    },
+    {
+      "id": "DLG-OP-003",
+      "expect": "pass",
+      "body": {
+        "p": "Ð:DLG",
+        "v": 1,
+        "net": "dogecoin",
+        "op": "tip",
+        "nonce": "0000000000001002",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "ref": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0",
+        "text": "such post",
+        "sig": "H0mYH2EgLMx27LbjwdB4kZe8i/ikp+H2MYnlwrm7sIQnUMhy74nbSszxbI+s4IGKxrvM2p5Va8fBvDEeSxWwT5s="
+      },
+      "signed_message": "Ðialog:v1:{\"addr\":\"DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE\",\"net\":\"dogecoin\",\"nonce\":\"0000000000001002\",\"op\":\"tip\",\"p\":\"Ð:DLG\",\"ref\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0\",\"text\":\"such post\",\"v\":1}"
+    },
+    {
+      "id": "DLG-OP-004",
+      "expect": "pass",
+      "body": {
+        "p": "Ð:DLG",
+        "v": 1,
+        "net": "dogecoin",
+        "op": "profile",
+        "nonce": "0000000000001003",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "name": "Fixture Shibe",
+        "bio": "Public test key 1.",
+        "avatar": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi0",
+        "links": [
+          "https://dogenals.org"
+        ],
+        "tip": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "sig": "IP9c3jDYUbgXvW785fR0u6UbWY7ALTQVN5ICMWvXv0SncvghFua8tv6vhPq1gjg0jgJkW5ei2mFvu4YltdTGh9Q="
+      },
+      "signed_message": "Ðialog:v1:{\"addr\":\"DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE\",\"avatar\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi0\",\"bio\":\"Public test key 1.\",\"links\":[\"https://dogenals.org\"],\"name\":\"Fixture Shibe\",\"net\":\"dogecoin\",\"nonce\":\"0000000000001003\",\"op\":\"profile\",\"p\":\"Ð:DLG\",\"tip\":\"DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE\",\"v\":1}"
+    },
+    {
+      "id": "DLG-OP-005",
+      "expect": "pass",
+      "body": {
+        "p": "Ð:DLG",
+        "v": 1,
+        "net": "dogecoin",
+        "op": "keylink",
+        "nonce": "0000000000001004",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "ref": "DGcTmSgC9cgKW1dET4MNFLV5bCg7em2Bds",
+        "ops": [
+          "post",
+          "reply",
+          "engage"
+        ],
+        "label": "cli",
+        "sig": "H6nG8K/w2+gIy1VKkFiPBu8wfMBE9d195k7xQ2lhzw8qGYDYTM4dHw3MAXCsCken/MBgNNIUVtWbq8mFjFXtDSA="
+      },
+      "signed_message": "Ðialog:v1:{\"addr\":\"DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE\",\"label\":\"cli\",\"net\":\"dogecoin\",\"nonce\":\"0000000000001004\",\"op\":\"keylink\",\"ops\":[\"post\",\"reply\",\"engage\"],\"p\":\"Ð:DLG\",\"ref\":\"DGcTmSgC9cgKW1dET4MNFLV5bCg7em2Bds\",\"v\":1}"
+    },
+    {
+      "id": "DLG-OP-006",
+      "expect": "pass",
+      "body": {
+        "p": "Ð:DLG",
+        "v": 1,
+        "net": "dogecoin",
+        "op": "keyrevoke",
+        "nonce": "0000000000001005",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "ref": "DGcTmSgC9cgKW1dET4MNFLV5bCg7em2Bds",
+        "sig": "IEoWgrQoL9Q2tIc2Wh483fKAehasuq5F45ZY3QVk3YxgNPBiVUxj1NnZz+9ahDuLsqqJiLqZgxw/RK35WsWIWUs="
+      },
+      "signed_message": "Ðialog:v1:{\"addr\":\"DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE\",\"net\":\"dogecoin\",\"nonce\":\"0000000000001005\",\"op\":\"keyrevoke\",\"p\":\"Ð:DLG\",\"ref\":\"DGcTmSgC9cgKW1dET4MNFLV5bCg7em2Bds\",\"v\":1}"
+    },
+    {
+      "id": "DLG-OP-007",
+      "expect": "pass",
+      "body": {
+        "p": "Ð:DLG",
+        "v": 1,
+        "net": "dogecoin",
+        "op": "engage",
+        "nonce": "0000000000001006",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "ref": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0",
+        "react": "none",
+        "sig": "HxC3i2S899BQDBzukJ4BSQR9+S35+ge2Zcy/Tg1pN1DIJSWxnZ9ChvJR40GGVCgmD4g1opKSJXD+MILBpvCuqT0="
+      },
+      "signed_message": "Ðialog:v1:{\"addr\":\"DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE\",\"net\":\"dogecoin\",\"nonce\":\"0000000000001006\",\"op\":\"engage\",\"p\":\"Ð:DLG\",\"react\":\"none\",\"ref\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0\",\"v\":1}"
+    },
+    {
+      "id": "DLG-OP-008",
+      "expect": "pass",
+      "body": {
+        "p": "Ð:DLG",
+        "v": 1,
+        "net": "dogecoin",
+        "op": "post",
+        "nonce": "0000000000001007",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "text": "With media and an app hint.",
+        "media": [
+          "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi0"
+        ],
+        "app": "doginals.lol",
+        "sig": "IJGQSLOkbTAE9lylH13VL86tJxTSAb33IPK7rDlvyqITBuOHxhDa1B32AIsvxNReJVKffeSix5RDhU4LXU3KDZ0="
+      },
+      "signed_message": "Ðialog:v1:{\"addr\":\"DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE\",\"app\":\"doginals.lol\",\"media\":[\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi0\"],\"net\":\"dogecoin\",\"nonce\":\"0000000000001007\",\"op\":\"post\",\"p\":\"Ð:DLG\",\"text\":\"With media and an app hint.\",\"v\":1}"
+    },
+    {
+      "id": "DLG-OP-F01",
+      "expect": "fail",
+      "reason": "field",
+      "body": {
+        "p": "Ð:DLG",
+        "v": 1,
+        "net": "dogecoin",
+        "op": "edit",
+        "nonce": "0000000000002000",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "ref": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0",
+        "text": "x",
+        "react": "like",
+        "sig": "H98hTqtK2fjN5iLkVvhj4LlDieIuRqXsArnmS5NmYsG/Vkb7d1Umhxicpi8JwH2yBZd2Jm0NCphDdm8y83WSejo="
+      }
+    },
+    {
+      "id": "DLG-OP-F02",
+      "expect": "fail",
+      "reason": "ref",
+      "body": {
+        "p": "Ð:DLG",
+        "v": 1,
+        "net": "dogecoin",
+        "op": "edit",
+        "nonce": "0000000000002001",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "ref": "D5kTEGxmas71USKAcAaJptKjq8NJc6EK8C",
+        "text": "x",
+        "sig": "IMLUi4O9HjxdqvXqiDuo+k3OqzGvZVDWBt1Sc+UcicNOZHMU9z3l+l5BfOGkL5CPaH+IZcXYOfwhK9NT5NswSAg="
+      }
+    },
+    {
+      "id": "DLG-OP-F03",
+      "expect": "fail",
+      "reason": "links",
+      "body": {
+        "p": "Ð:DLG",
+        "v": 1,
+        "net": "dogecoin",
+        "op": "profile",
+        "nonce": "0000000000002002",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "links": [
+          "javascript:alert(1)"
+        ],
+        "sig": "IDqowLdTIOjWUv+TbEhrD9NHuRwgBGQU7C42LkUKLrNaPJwANxnkmBgGSsUbcy5Rzfbe0N9uaD2LsV+VivBQaIo="
+      }
+    },
+    {
+      "id": "DLG-OP-F04",
+      "expect": "fail",
+      "reason": "ops",
+      "body": {
+        "p": "Ð:DLG",
+        "v": 1,
+        "net": "dogecoin",
+        "op": "keylink",
+        "nonce": "0000000000002003",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "ref": "DGcTmSgC9cgKW1dET4MNFLV5bCg7em2Bds",
+        "ops": [
+          "profile"
+        ],
+        "sig": "IP0ho6Rk5Ni2ezEXjrIqH9QMuZlwrWjr2+v/YJDZZOWCB58I2KwQlw/sjU7mLzqpzIZ2ufZrDuTylc7Qt3T26cM="
+      }
+    },
+    {
+      "id": "DLG-OP-F05",
+      "expect": "fail",
+      "reason": "as",
+      "body": {
+        "p": "Ð:DLG",
+        "v": 1,
+        "net": "dogecoin",
+        "op": "profile",
+        "nonce": "0000000000002004",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "name": "x",
+        "as": "D5kTEGxmas71USKAcAaJptKjq8NJc6EK8C",
+        "sig": "H9UErImFe+VcKCGH3frHKhRcQgy8c3SMc6zK7vqkoWPsE6fcy5SiDTuqshdjaMAgivfiV/NeDltVxinw5VTc1Ww="
+      }
+    },
+    {
+      "id": "DLG-OP-F06",
+      "expect": "fail",
+      "reason": "ref",
+      "body": {
+        "p": "Ð:DLG",
+        "v": 1,
+        "net": "dogecoin",
+        "op": "keylink",
+        "nonce": "0000000000002005",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "ref": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "ops": [
+          "post"
+        ],
+        "sig": "H+LCZniyRSL7vp3jHUhxUWYs8+n6QR28DVHPRXb2cL5+WIjvIBmd8OMp6dfYR2kGxcw9XtVa6T8Hz+lf5Ckq3EU="
+      }
+    },
+    {
+      "id": "DLG-OP-F07",
+      "expect": "fail",
+      "reason": "react",
+      "body": {
+        "p": "Ð:DLG",
+        "v": 1,
+        "net": "dogecoin",
+        "op": "engage",
+        "nonce": "0000000000002006",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "ref": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0",
+        "react": "rocket",
+        "sig": "H/7ouKDeCQ0+rWUsR4kMgMcWHfuNBs4nQXUoQBBOZxkgeRarEfcJHYsgxmS6yZN1pTDDJzkiiwXvOYZ4du569cU="
+      }
+    },
+    {
+      "id": "DLG-OP-F08",
+      "expect": "fail",
+      "reason": "media",
+      "body": {
+        "p": "Ð:DLG",
+        "v": 1,
+        "net": "dogecoin",
+        "op": "post",
+        "nonce": "0000000000002007",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "text": "x",
+        "media": [
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0",
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0"
+        ],
+        "sig": "HwKbyg8JpjkuzJXbrfYFKbqSF6g0aX+fhiUXsfcKZy7fcyx1oZ7DLuCyY1FAoPxUZVIhYDlQ8fYI0ulC0vIkCvs="
+      }
+    }
+  ]
+}

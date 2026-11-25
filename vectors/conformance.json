@@ -1,113 +1,114 @@
 {
-  "$comment": "Ðocial v1.1 conformance — structural only; tip validity is UTXO-based.",
-  "version": "1.1",
-  "protocol": "dsocial",
-  "marker": "Ð:SOC",
+  "protocol": "dialog",
+  "version": 1,
+  "marker": "Ð:DLG",
   "vectors": [
     {
-      "id": "SOC-001",
-      "description": "Valid decoded engage signal",
-      "schema": "schemas/signal-decoded.json",
+      "id": "DLG-SCH-001",
+      "description": "Well-formed v1 post. Signature truth is vectors/auth.json.",
+      "schema": "schemas/content.json",
       "expect": "pass",
       "payload": {
-        "magic": "Ð:SOC",
-        "version": 1,
-        "kind": "engage",
-        "reaction": "like",
-        "reaction_byte": 1,
-        "target_hash16": "00112233445566778899aabbccddeeff",
-        "nonce": 1
-      }
-    },
-    {
-      "id": "SOC-002",
-      "description": "Valid post v1.1",
-      "schema": "schemas/post.json",
-      "expect": "pass",
-      "payload": {
-        "p": "Ð:SOC",
-        "v": "1.1",
+        "p": "Ð:DLG",
+        "v": 1,
+        "net": "dogecoin",
         "op": "post",
-        "chain": "dogecoin",
-        "content": "Hello Ðocial",
-        "pay_to": "D8mZsgKwmSQWYRPEMCcm8KzNFj1JVF5UpA"
+        "nonce": "0102030405060708",
+        "text": "Hello from a key, not from a recipient.",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "sig": "H3RgdKU3/dvdeWLeEKANG8ekwt3un9DPEZsqoH3l1qQ0NhX7neD31lv11nGRWvU04e+efFVZiN9cNxIua72bc/k="
       }
     },
     {
-      "id": "SOC-003",
-      "description": "Valid reply",
-      "schema": "schemas/post.json",
-      "expect": "pass",
-      "payload": {
-        "p": "Ð:SOC",
-        "v": "1.1",
-        "op": "reply",
-        "parent": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0",
-        "content": "Reply"
-      }
-    },
-    {
-      "id": "SOC-004",
-      "description": "Valid engage API event",
-      "schema": "schemas/engage.json",
-      "expect": "pass",
-      "payload": {
-        "kind": "engage",
-        "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0",
-        "sender": "DSender",
-        "reaction": "like",
-        "txid": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-        "tip_koinu": 100000,
-        "tipped": true
-      }
-    },
-    {
-      "id": "SOC-005",
-      "description": "Valid follow signal decoded",
-      "schema": "schemas/signal-decoded.json",
-      "expect": "pass",
-      "payload": {
-        "magic": "Ð:SOC",
-        "version": 1,
-        "kind": "follow",
-        "target_hash16": "ffffffffffffffffffffffffffffffff",
-        "nonce": 0
-      }
-    },
-    {
-      "id": "SOC-006",
-      "description": "Reject wrong magic",
-      "schema": "schemas/signal-decoded.json",
+      "id": "DLG-SCH-002",
+      "description": "Missing author signature",
+      "schema": "schemas/content.json",
       "expect": "fail",
       "payload": {
-        "magic": "Ð:DIG",
-        "version": 1,
-        "kind": "engage",
-        "target_hash16": "00112233445566778899aabbccddeeff"
+        "p": "Ð:DLG",
+        "v": 1,
+        "net": "dogecoin",
+        "op": "post",
+        "nonce": "0102030405060708",
+        "text": "unsigned",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE"
       }
     },
     {
-      "id": "SOC-007",
-      "description": "Reject reply without parent",
-      "schema": "schemas/post.json",
+      "id": "DLG-SCH-003",
+      "description": "Ð:SOC is not this marker",
+      "schema": "schemas/content.json",
       "expect": "fail",
       "payload": {
         "p": "Ð:SOC",
-        "v": "1.1",
-        "op": "reply",
-        "content": "orphan"
+        "v": 1,
+        "net": "dogecoin",
+        "op": "post",
+        "nonce": "0102030405060708",
+        "text": "old marker",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "sig": "H3RgdKU3/dvdeWLeEKANG8ekwt3un9DPEZsqoH3l1qQ0NhX7neD31lv11nGRWvU04e+efFVZiN9cNxIua72bc/k="
       }
     },
     {
-      "id": "SOC-008",
-      "description": "Reject legacy like inscription op as post schema",
-      "schema": "schemas/post.json",
+      "id": "DLG-SCH-004",
+      "description": "ASCII D is not the marker",
+      "schema": "schemas/content.json",
       "expect": "fail",
       "payload": {
-        "p": "Ð:SOC",
-        "v": "1.1",
-        "op": "like",
-        "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaai0"
+        "p": "D:DLG",
+        "v": 1,
+        "net": "dogecoin",
+        "op": "post",
+        "nonce": "0102030405060708",
+        "text": "ascii",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "sig": "H3RgdKU3/dvdeWLeEKANG8ekwt3un9DPEZsqoH3l1qQ0NhX7neD31lv11nGRWvU04e+efFVZiN9cNxIua72bc/k="
+      }
+    },
+    {
+      "id": "DLG-SCH-005",
+      "description": "Well-formed v1 profile. Signature truth is vectors/ops.json.",
+      "schema": "schemas/content.json",
+      "expect": "pass",
+      "payload": {
+        "p": "Ð:DLG",
+        "v": 1,
+        "net": "dogecoin",
+        "op": "profile",
+        "nonce": "0000000000001003",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "name": "Fixture Shibe",
+        "bio": "Public test key 1.",
+        "avatar": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi0",
+        "links": [
+          "https://dogenals.org"
+        ],
+        "tip": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "sig": "IP9c3jDYUbgXvW785fR0u6UbWY7ALTQVN5ICMWvXv0SncvghFua8tv6vhPq1gjg0jgJkW5ei2mFvu4YltdTGh9Q="
+      }
+    },
+    {
+      "id": "DLG-SCH-006",
+      "description": "Unknown field on a profile",
+      "schema": "schemas/content.json",
+      "expect": "fail",
+      "payload": {
+        "p": "Ð:DLG",
+        "v": 1,
+        "net": "dogecoin",
+        "op": "profile",
+        "nonce": "0000000000001003",
+        "addr": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "name": "Fixture Shibe",
+        "bio": "Public test key 1.",
+        "avatar": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbi0",
+        "links": [
+          "https://dogenals.org"
+        ],
+        "tip": "DFpN6QqFfUm3gKNaxN6tNcab1FArL9cZLE",
+        "sig": "IP9c3jDYUbgXvW785fR0u6UbWY7ALTQVN5ICMWvXv0SncvghFua8tv6vhPq1gjg0jgJkW5ei2mFvu4YltdTGh9Q=",
+        "location": "Moon"
       }
     }
   ]

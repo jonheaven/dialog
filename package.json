@@ -1,0 +1,10 @@
+{
+  "name": "dialog-vector-checks",
+  "private": true,
+  "type": "module",
+  "description": "Runs the Ðialog v1 checks. Not a wallet or indexer.",
+  "dependencies": {
+    "@noble/hashes": "^1.8.0",
+    "@noble/secp256k1": "^3.0.0"
+  }
+}

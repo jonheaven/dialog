@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dogenals.org/schemas/dialog-v1.json",
+  "title": "Ðialog v1 inscription body",
+  "description": "Shape only. Signature, address checksums, duplicate keys, and state rules are in spec.md and codec.mjs.",
+  "type": "object",
+  "required": ["p", "v", "net", "op", "nonce", "addr", "sig"],
+  "properties": {
+    "p": { "const": "Ð:DLG" },
+    "v": { "const": 1 },
+    "net": { "const": "dogecoin" },
+    "op": {
+      "enum": ["post", "reply", "quote", "repost", "engage", "follow", "unfollow", "edit", "delete", "tip", "profile", "keylink", "keyrevoke"]
+    },
+    "nonce": { "type": "string", "pattern": "^[0-9a-f]{16}$" },
+    "addr": { "$ref": "#/$defs/address" },
+    "sig": { "type": "string", "minLength": 88, "maxLength": 88, "pattern": "^[A-Za-z0-9+/]{87}=$" },
+    "as": { "$ref": "#/$defs/address" },
+    "app": { "type": "string", "pattern": "^[a-z0-9][a-z0-9.-]{0,31}$" },
+    "text": { "type": "string" },
+    "ref": { "type": "string" },
+    "react": { "enum": ["like", "heart", "fire", "laugh", "doge", "none"] },
+    "media": { "type": "array", "minItems": 1, "maxItems": 4, "uniqueItems": true, "items": { "$ref": "#/$defs/inscriptionId" } },
+    "tip": { "$ref": "#/$defs/address" },
+    "name": { "type": "string", "minLength": 1, "maxLength": 50 },
+    "bio": { "type": "string", "maxLength": 500 },
+    "avatar": { "$ref": "#/$defs/inscriptionId" },
+    "banner": { "$ref": "#/$defs/inscriptionId" },
+    "links": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 4,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 9, "maxLength": 200, "pattern": "^https://[^\\s]+$" }
+    },
+    "ops": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["post", "reply", "quote", "repost", "engage", "follow", "unfollow", "edit", "delete", "tip"] }
+    },
+    "label": { "type": "string", "minLength": 1, "maxLength": 32 }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    { "if": { "properties": { "op": { "enum": ["post", "reply", "quote", "edit"] } } }, "then": { "required": ["text"] } },
+    { "if": { "properties": { "op": { "enum": ["reply", "quote", "repost", "engage", "edit", "delete", "tip"] } } }, "then": { "required": ["ref"], "properties": { "ref": { "$ref": "#/$defs/inscriptionId" } } } },
+    { "if": { "properties": { "op": { "enum": ["follow", "unfollow", "keylink", "keyrevoke"] } } }, "then": { "required": ["ref"], "properties": { "ref": { "$ref": "#/$defs/address" } } } },
+    { "if": { "properties": { "op": { "const": "engage" } } }, "then": { "required": ["react"] } },
+    { "if": { "properties": { "op": { "const": "keylink" } } }, "then": { "required": ["ops"] } },
+    { "if": { "properties": { "op": { "const": "post" } } }, "then": { "not": { "required": ["ref"] } } }
+  ],
+  "$defs": {
+    "address": { "type": "string", "pattern": "^D[1-9A-HJ-NP-Za-km-z]{25,34}$" },
+    "inscriptionId": { "type": "string", "pattern": "^[0-9a-f]{64}i(0|[1-9][0-9]{0,9})$" }
+  }
+}
